@@ -7,6 +7,7 @@ from alembic import context
 # Models & Settings Imports
 from app.models.base import Base
 import app.models.users
+import app.models.users
 import app.models.wardrobe
 from app.core.config import settings
 
