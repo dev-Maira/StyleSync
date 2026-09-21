@@ -10,3 +10,4 @@ app = FastAPI(
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(clothing.router, prefix="/clothing", tags=["Wardrobe"])
 app.include_router(outfits.router, prefix="/outfits", tags=["Outfits"])
+

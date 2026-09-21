@@ -8,8 +8,7 @@ from app.models.users import User  # Aapka original module import
 from app.schemas.user import UserCreate, UserResponse
 from app.core.security import hash_password, verify_password, create_access_token
 
-router = APIRouter(prefix="/auth", tags=["Auth"])
-
+router = APIRouter(tags=["Auth"])  # prefix="/auth" yahan se hata diya
 
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def register_user(user_data: UserCreate, db: AsyncSession = Depends(get_db)):
