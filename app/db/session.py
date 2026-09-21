@@ -1,20 +1,21 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from app.core.config import settings
 
-# 1. Async Engine banao (joins FastAPI to Postgres via asyncpg)
+# 1. Async Engine (settings.DATABASE_URL pass karein)
 engine = create_async_engine(
     settings.DATABASE_URL,
-    echo=True  # Terminal par SQL queries print hone ke liye
+    echo=False,
+    pool_pre_ping=True
 )
 
-# 2. Async Session factory setup karo
+# 2. Async Session factory setup
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,
     class_=AsyncSession,
     expire_on_commit=False
 )
 
-# 3. Dependency function jo FastAPI endpoints ko DB session dega
+# 3. Dependency function
 async def get_db():
     async with AsyncSessionLocal() as session:
         yield session
