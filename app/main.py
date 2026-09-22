@@ -13,8 +13,7 @@ app = FastAPI(
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(clothing.router, prefix="/clothing", tags=["Wardrobe"])
 app.include_router(outfits.router, prefix="/outfits", tags=["Outfits"])
-app.include_router(agent.router)
-
+app.include_router(agent.router, prefix="/agent", tags=["AI Agent"])
 @app.on_event("startup")
 async def startup():
     async with engine.begin() as conn:
