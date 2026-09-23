@@ -10,8 +10,8 @@ app = FastAPI(
 )
 
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
-app.include_router(clothing.router, prefix="/clothing", tags=["Wardrobe"])
-app.include_router(outfits.router, prefix="/outfits", tags=["Outfits"])
+app.include_router(clothing.router, tags=["Wardrobe"])
+app.include_router(outfits.router, tags=["Outfits"])
 
 @app.on_event("startup")
 async def startup():
